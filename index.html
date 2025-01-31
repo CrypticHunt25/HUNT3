@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cryptic Hunt 3 - Step 1</title>
+  <style>
+    body {
+      background: url('https://i.imgur.com/jk9fWnF.jpg') no-repeat center center fixed;
+      background-size: cover;
+      font-family: 'Luminari', 'Georgia', serif;
+      color: #f8f1e8;
+      text-align: center;
+      padding: 20px;
+    }
+    .container {
+      background: rgba(0, 0, 0, 0.7);
+      padding: 20px;
+      border-radius: 15px;
+      box-shadow: 0 0 15px 5px #ffd700;
+      animation: glow 3s infinite alternate;
+    }
+    @keyframes glow {
+      from { box-shadow: 0 0 15px 5px #ffd700; }
+      to { box-shadow: 0 0 25px 10px #fff700; }
+    }
+    h1 {
+      font-size: 3em;
+      text-shadow: 2px 2px 5px #000;
+    }
+    .riddle {
+      font-size: 1.5em;
+      margin: 20px 0;
+      animation: fadeIn 3s;
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+    .input-box {
+      margin-top: 20px;
+    }
+    input[type="text"] {
+      font-size: 1.2em;
+      padding: 10px;
+      border: 2px solid #ffd700;
+      border-radius: 10px;
+      background: #f8f1e8;
+      color: #000;
+    }
+    button {
+      font-size: 1.2em;
+      padding: 10px 20px;
+      margin-top: 10px;
+      background: #ffd700;
+      border: none;
+      border-radius: 10px;
+      cursor: pointer;
+      color: #000;
+      transition: background 0.3s;
+    }
+    button:hover {
+      background: #fff700;
+    }
+    .message {
+      margin-top: 20px;
+      font-size: 1.2em;
+      color: #0f0;
+    }
+    .error {
+      color: #f00;
+    }
+  </style>
+  <script>
+    function checkAnswer() {
+      const userInput = document.getElementById("answer").value.trim().toLowerCase();
+      const correctAnswer = "the shrieking shack";
+      const message = document.getElementById("message");
+
+      if (userInput === correctAnswer) {
+        message.innerHTML = "<b>Well done! You may proceed to the next step.</b>";
+        message.classList.remove("error");
+        setTimeout(() => {
+          window.location.href = "step2.html";
+        }, 2000);
+      } else {
+        message.textContent = "Incorrect answer. Try again!";
+        message.classList.add("error");
+      }
+    }
+  </script>
+</head>
+<body>
+  <div class="container">
+    <h1>Welcome to Cryptic Hunt 3 - Step 1</h1>
+    <p class="riddle">
+      "In Hogsmeade stands a place of fear,<br>
+      Haunted whispers you may hear.<br>
+      Known to wizards, dreaded and black,<br>
+      Tell me, where's this eerie shack?"
+    </p>
+    <div class="input-box">
+      <input type="text" id="answer" placeholder="Your answer here...">
+      <br>
+      <button onclick="checkAnswer()">Submit</button>
+      <p id="message"></p>
+    </div>
+  </div>
+</body>
+</html>
